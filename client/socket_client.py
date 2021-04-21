@@ -2,29 +2,31 @@ import socket
 import os
 import sys
 import struct
+import numpy
+import cv2
+encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 15]
 
-
-def sock_client():
+def sock_client(src):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(('192.168.5.103', 2000))
+        s.connect(('192.168.5.100', 2000))
     except socket.error as msg:
         print(msg)
         print(sys.exit(1))
 
     while True:
-        filepath = './detection_result.jpg'
-        fhead = struct.pack(b'128sq', bytes(os.path.basename(filepath), encoding='utf-8'), os.stat(filepath).st_size)
-        s.send(fhead)
-        print('client filepath: {0}'.format(filepath))
+        result, imgencode = cv2.imencode('.jpg', src, encode_param)
+        # 建立矩阵
+        data = numpy.array(imgencode)
+        # 将numpy矩阵转换成字符形式，以便在网络中传输
+        stringData = data.tostring()
 
-        fp = open(filepath, 'rb')
-        while 1:
-            data = fp.read(1024)
-            if not data:
-                print('{0} file send over...'.format(filepath))
-                break
-            s.send(data)
+        # 先发送要发送的数据的长度
+        # ljust() 方法返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串
+        s.send(str.encode(str(len(stringData)).ljust(16)));
+        # 发送数据
+        s.send(stringData);
+
         data=s.recv(1024)
         print('签到成功:', data.decode('utf-8'))  # 输出我接收的信息
         break

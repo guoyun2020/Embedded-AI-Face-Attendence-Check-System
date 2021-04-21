@@ -5,14 +5,13 @@ import pandas as pd
 import pickle
 
 
-def identification():
+def identification(face):
     pkl_file = open('facedata.pkl', 'rb')
     all_known_face_encodings = pickle.load(pkl_file)
     pkl_file.close()
     know_name = pd.read_csv('./person_name.csv')
     known_face_names = list(know_name.iloc[:, 1])
     name = "Unknown"
-    face = cv2.imread("./new_detection_result.jpg")
     face_locations = face_recognition.face_locations(face)
     face_encodings = face_recognition.face_encodings(face, face_locations)
     for face_encoding in face_encodings:
