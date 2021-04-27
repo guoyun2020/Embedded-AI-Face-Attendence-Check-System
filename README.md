@@ -1,6 +1,10 @@
 ## 项目名称
 智慧教室人脸考勤系统
 
+## Current work progress
+**4.21 deploy on Jetson Nano and send Mat directly**  
+4.18 face recognition/match and socket
+
 ## 项目介绍
 该系统主要用于基于人脸识别的课堂考勤场景，技术实现如下：
 ### ①客户端
