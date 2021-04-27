@@ -6,12 +6,13 @@ import time
 import numpy
 import cv2
 from identification import identification
+from displayInfo import displayInfo
 
 def recv_reply():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind(('192.168.5.100', 2000))
+        s.bind(('192.168.5.106', 2000))
         s.listen(10)
     except socket.error as msg:
         print(msg)
@@ -37,6 +38,7 @@ def recv_reply():
         data = numpy.frombuffer(stringData, numpy.uint8)  # 将获取到的字符流数据转换成1维数组
         decimg = cv2.imdecode(data, cv2.IMREAD_COLOR)  # 将数组解码成图像
         print('识别结果:' + identification(decimg))
+        displayInfo(identification(decimg))
         send_msg = identification(decimg).encode('utf-8')
         sock.send(send_msg)
         break
