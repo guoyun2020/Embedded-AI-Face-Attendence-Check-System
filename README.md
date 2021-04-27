@@ -2,7 +2,8 @@
 智慧教室人脸考勤系统
 
 ## Current work progress
-**4.21 deploy on Jetson Nano and send Mat directly**  
+**4.27 add function of person's img display
+4.21 deploy on Jetson Nano and send Mat directly**  
 4.18 face recognition/match and socket
 
 ## 项目介绍
