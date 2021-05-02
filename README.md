@@ -1,7 +1,7 @@
 ## 项目名称
 智慧教室人脸考勤系统
 
-## Current work progress
+## 项目进度
 **5.2 add function of database based on SQLite**  
 4.28 add function of person's img display  
 4.21 deploy on Jetson Nano and send Mat directly  
