@@ -2,7 +2,7 @@
 智慧教室人脸考勤系统
 
 ## 项目进度
-**5.2 add function of database based on SQLite**  
+**5.2  add function of database based on SQLite**  
 4.28 add function of person's img display  
 4.21 deploy on Jetson Nano and send Mat directly  
 4.18 face recognition/match and socket
