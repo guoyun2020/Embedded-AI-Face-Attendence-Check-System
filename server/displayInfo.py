@@ -5,7 +5,7 @@ import numpy as np
 def displayInfo(name):
     if name != "Unknown":
         path = "./img/"+name + ".png"
-        print(path)
+        # print(path)
         img = cv2.imdecode(np.fromfile(path,dtype=np.uint8),-1)
         img=cv2.resize(img, (250,330), cv2.INTER_AREA)
         text = "Sign in successfully!"
@@ -14,7 +14,7 @@ def displayInfo(name):
         cv2.waitKey(10)
     else:
         path = "./img/" + name + ".png"
-        print(path)
+        # print(path)
         img = cv2.imdecode(np.fromfile(path, dtype=np.uint8), -1)
         img = cv2.resize(img, (250, 330), cv2.INTER_AREA)
         cv2.imshow("img", img)

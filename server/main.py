@@ -1,8 +1,12 @@
 from socket_server import recv_reply
+from student import student
+from course import course
+from SQLite import getNameList
 
 if __name__ == '__main__':
+    cour = course('网络编程', getNameList())
     while True:
-        recv_reply()
+        recv_reply(cour)
 
 
 

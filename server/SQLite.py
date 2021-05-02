@@ -24,14 +24,6 @@ def getInfo(name):
     conn.row_factory = dict_factory
     cursor = conn.cursor()
 
-    # 执行一条语句,创建 user表
-    # sql = "create table login (id varchar(20) primary key, name varchar(30), password varchar(30))"
-    # cursor.execute(sql)
-
-    # 插入一条记录
-    # sql = "insert into login (name, password) values (\'love\', \'520520')"
-    # cursor.execute(sql)
-
     # 查询一条记录：
     sql = "select name from student"
     cursor.execute(sql)
@@ -51,3 +43,21 @@ def getInfo(name):
     conn.commit()
     # 关闭连接
     conn.close()
+
+
+def getNameList():
+    conn = sqlite3.connect("student.db")
+
+    conn.row_factory = dict_factory
+    cursor = conn.cursor()
+
+    # 查询一条记录：
+    sql = "select name from student"
+    cursor.execute(sql)
+    # 获取查询结果：
+    values = cursor.fetchall()
+    names=[]
+    for i in values:
+        if i['name'] != 'Unknown':
+            names.append(i['name'])
+    return names

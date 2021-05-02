@@ -23,11 +23,13 @@ def sock_client(src):
 
         # 先发送要发送的数据的长度
         # ljust() 方法返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串
-        s.send(str.encode(str(len(stringData)).ljust(16)));
+        s.send(str.encode(str(len(stringData)).ljust(16)))
         # 发送数据
-        s.send(stringData);
+        s.send(stringData)
 
         data=s.recv(1024)
-        print('签到成功:', data.decode('utf-8'))  # 输出我接收的信息
+        recv_data = data.decode('utf-8')
+        if recv_data != 'Unknown':
+            print('签到成功:', recv_data)  # 输出我接收的信息
         break
 

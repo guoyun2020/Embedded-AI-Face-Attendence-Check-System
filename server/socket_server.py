@@ -8,8 +8,11 @@ import cv2
 from identification import identification
 from displayInfo import displayInfo
 from SQLite import getInfo
+from student import student
+from course import course
 
-def recv_reply():
+
+def recv_reply(cour):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -29,25 +32,28 @@ def recv_reply():
             buf += newbuf
             count -= len(newbuf)
         return buf
+
     sock, addr = s.accept()
-    print('connect from:' + str(addr))
+    # print('connect from:' + str(addr))
 
     while True:
-        start = time.time()  # 用于计算帧率信息
         length = recvall(sock, 16)  # 获得图片文件的长度,16代表获取长度
         stringData = recvall(sock, int(length))  # 根据获得的文件长度，获取图片文件
         data = numpy.frombuffer(stringData, numpy.uint8)  # 将获取到的字符流数据转换成1维数组
         decimg = cv2.imdecode(data, cv2.IMREAD_COLOR)  # 将数组解码成图像
-        name_result=identification(decimg)
-        print('识别结果:' + name_result)
-        print(getInfo(name_result))
+        name_result = identification(decimg)
+        stu = student(name_result, getInfo(name_result)['id'], getInfo(name_result)['class']
+                      , getInfo(name_result)['major'])
+        # print('识别结果:' + name_result)
+        # print(getInfo(name_result))
+        if name_result != 'Unknown':
+            cour.sign(stu)
+        cour.display_singIn()
+        cour.display_singOut()
         displayInfo(identification(decimg))
         send_msg = identification(decimg).encode('utf-8')
         sock.send(send_msg)
         break
 
-
     sock.close()
     s.close()
-
-
