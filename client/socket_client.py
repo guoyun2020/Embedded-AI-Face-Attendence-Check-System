@@ -9,7 +9,7 @@ encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 15]
 def sock_client(src):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(('192.168.5.100', 2000))
+        s.connect(('192.168.5.106', 2000))
     except socket.error as msg:
         print(msg)
         print(sys.exit(1))

@@ -33,9 +33,9 @@ def brighter(image, percetage=1.5):
 
 
 
-for people in range(3,4):
+for people in range(0,4):
     # 图片文件夹路径
-    file_dir = f"C:\\Users\\Hoshino Naoki\\PycharmProjects\\face_det\\face\\{str(people)}\\"
+    file_dir = f"C:/Users/Hoshino Naoki/PycharmProjects/test/Embedded-AI-Face-Attendence-Check-System/server/face/{str(people)}\\"
     for img_name in os.listdir(file_dir):
         img_path = file_dir + img_name
         img = cv2.imread(img_path)

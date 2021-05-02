@@ -65,4 +65,4 @@ while True:
 
     # Display the resulting image
     cv2.imshow('Video', frame)
-    cv2.waitKey(300)
+    cv2.waitKey(10)

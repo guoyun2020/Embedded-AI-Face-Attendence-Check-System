@@ -7,6 +7,7 @@ import numpy
 import cv2
 from identification import identification
 from displayInfo import displayInfo
+from SQLite import getInfo
 
 def recv_reply():
     try:
@@ -37,7 +38,9 @@ def recv_reply():
         stringData = recvall(sock, int(length))  # 根据获得的文件长度，获取图片文件
         data = numpy.frombuffer(stringData, numpy.uint8)  # 将获取到的字符流数据转换成1维数组
         decimg = cv2.imdecode(data, cv2.IMREAD_COLOR)  # 将数组解码成图像
-        print('识别结果:' + identification(decimg))
+        name_result=identification(decimg)
+        print('识别结果:' + name_result)
+        print(getInfo(name_result))
         displayInfo(identification(decimg))
         send_msg = identification(decimg).encode('utf-8')
         sock.send(send_msg)
