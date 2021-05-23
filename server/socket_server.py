@@ -16,7 +16,7 @@ def recv_reply(cour):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind(('192.168.5.106', 2000))
+        s.bind(('192.168.5.103', 2000))
         s.listen(10)
     except socket.error as msg:
         print(msg)
@@ -50,9 +50,15 @@ def recv_reply(cour):
             cour.sign(stu)
         cour.display_singIn()
         cour.display_singOut()
-        displayInfo(identification(decimg))
-        send_msg = identification(decimg).encode('utf-8')
-        sock.send(send_msg)
+        displayInfo(identification(decimg), sock)
+        name_stu = name_result.encode('utf-8')
+        sock.send(name_stu)
+        id_stu = str(getInfo(name_result)['id']).encode('utf-8')
+        sock.send(id_stu)
+        class_stu = str(getInfo(name_result)['class']).encode('utf-8')
+        sock.send(class_stu)
+        major_stu = getInfo(name_result)['major'].encode('utf-8')
+        sock.send(major_stu)
         break
 
     sock.close()
