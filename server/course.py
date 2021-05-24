@@ -21,10 +21,12 @@ class course:
         print("当前课程：", self.name)
         print("签到成功:")
         print(self.signIn)
+        return self.signIn
 
     def display_singOut(self):
         print("迟到:")
         print(self.singOut)
+        return self.singOut
 
     def display_allStudent(self):
         print(self.allStudent)
