@@ -2,11 +2,15 @@
 智慧教室人脸考勤系统
 
 ## 项目进度
-**5.3  achieve check-in management system**  
+**5.24 finish client and server GUI**  
+5.3  achieve check-in management system  
 5.2  add function of database based on SQLite   
 4.28 add function of person's img display  
 4.21 deploy on Jetson Nano and send Mat directly  
-4.18 face recognition/match and socket
+4.18 face recognition/match and socket  
+
+## 效果展示
+![avatar](/example.png)  
 
 ## 项目介绍
 该系统主要用于基于人脸识别的课堂考勤场景，技术实现如下：
