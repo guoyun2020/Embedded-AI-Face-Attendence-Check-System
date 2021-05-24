@@ -9,6 +9,13 @@
 4.21 deploy on Jetson Nano and send Mat directly  
 4.18 face recognition/match and socket  
 
+## requirements
+opencv_python==4.5.1.48  
+numpy==1.19.3  
+pandas==0.24.2  
+face_recognition==1.3.0  
+PyQt5==5.15.4  
+
 ## 效果展示
 ![avatar](/example.png)  
 
