@@ -17,9 +17,9 @@ face_recognition==1.3.0
 PyQt5==5.15.4  
 
 ## 效果展示
-![avatar](/example.png)  
-![avatar](/example1.jpg)  
-![avatar](/example2.jpg)  
+![avatar](/example.png)    
+![avatar](/example1.jpg)    
+![avatar](/example2.jpg)    
 
 ## 项目介绍
 该系统主要用于基于人脸识别的课堂考勤场景，技术实现如下：
