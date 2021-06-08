@@ -1,8 +1,10 @@
 ## 项目名称
 智慧教室人脸考勤系统
 
-## 项目进度
-**5.24 finish client and server GUI**  
+## 项目进度  
+**6.7  hardware packaging and testing**  
+6.5  processing of 3D printed shell    
+5.24 finish client and server GUI    
 5.3  achieve check-in management system  
 5.2  add function of database based on SQLite   
 4.28 add function of person's img display  
@@ -17,7 +19,6 @@ face_recognition==1.3.0
 PyQt5==5.15.4  
 
 ## 效果展示
-![avatar](/example.png)    
 ![avatar](/example1.jpg)    
 ![avatar](/example2.jpg)    
 
