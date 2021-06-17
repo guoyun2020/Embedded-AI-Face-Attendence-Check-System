@@ -45,15 +45,15 @@ class gui(QWidget):
             area = (right - left) * (bottom - top)
 
             face = frame[top:bottom, left:right]
-
-            reimg = sock_client(face, self.info)
+            if face.shape[0]*face.shape[1]>28900:
+                  reimg = sock_client(face, self.info)
 
             # Draw a box around the face
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
         if not ret:
             print('read error!\n')
             return
-        self.timelabel.setText(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'                  当前课程：网络编程')
+        self.timelabel.setText(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'                                  当前课程：网络编程')
         self.timelabel.setFont(QFont("微软雅黑", 10, QFont.Bold))
         img = cv2.resize(frame, dsize=(491, 271))
         image_height, image_width, image_depth = img.shape  # 读取图像高宽深度
@@ -81,7 +81,7 @@ class gui(QWidget):
         self.timer.stop()
 
     def initUI(self):
-        self.resize(538, 630)
+        self.resize(530, 630)
         self.lbl = QLabel(self)
         self.lbl.setGeometry(QtCore.QRect(20, 30, 491, 271))
         self.timelabel = QLabel(self)
@@ -109,7 +109,7 @@ class gui(QWidget):
         self.openCameraBtn.setEnabled(True)
         self.closeCameraBtn.setEnabled(False)
         self.QLable_close()
-        self.setWindowTitle('人脸考勤系统 v1.0')
+        self.setWindowTitle('人脸考勤系统客户端 v1.0')
         self.show()
 
 
